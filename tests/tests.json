@@ -1,0 +1,148 @@
+[
+  {
+    "name": "Sign in and create event",
+    "sanity": true,
+    "viewport": "desktop",
+    "covers": [
+      "authentication",
+      "event creation",
+      "database persistence",
+      "dashboard",
+      "transparent company logo",
+      "enlarged responsive branding",
+      "modern dashboard visual design",
+      "event background readability"
+    ],
+    "description": "Create an event and verify it persists.",
+    "steps": [
+      "Verify the event-photo background, enlarged transparent logo and sign-in button are clearly visible.",
+      "Sign in",
+      "Create an event named Royal Gala with venue Kampala",
+      "Refresh the page",
+      "Open Events",
+      "Verify the sidebar shows a larger logo above the company name."
+    ],
+    "expected": "Royal Gala is listed with Kampala. The logo has no black background and is clearly visible at a larger size."
+  },
+  {
+    "name": "Create seating and guests",
+    "viewport": "desktop",
+    "covers": [
+      "table creation",
+      "guest creation",
+      "table assignment",
+      "event selection",
+      "event and table card layouts",
+      "consistent forms"
+    ],
+    "description": "Create a table and assign a guest.",
+    "setup": [
+      "Sign in and create an event named Seating Test"
+    ],
+    "steps": [
+      "Select Seating Test",
+      "Add a VIP table named Table One with 8 seats",
+      "Add guest Alex and assign Table One",
+      "Open Guests",
+      "Open Tables and verify Table One appears in a readable card."
+    ],
+    "expected": "Alex appears with Table One and VIP table capacity appears on the dashboard."
+  },
+  {
+    "name": "Validation and deletion",
+    "viewport": "mobile",
+    "covers": [
+      "required name validation",
+      "deletion confirmation",
+      "mobile navigation",
+      "responsive page design"
+    ],
+    "description": "Verify required names and deletion.",
+    "setup": [
+      "Sign in and create an event named Delete Test"
+    ],
+    "steps": [
+      "Open Events",
+      "Try to add an event with an empty name",
+      "Cancel the form",
+      "Delete Delete Test and confirm",
+      "Refresh the page"
+    ],
+    "expected": "An empty event cannot be saved and Delete Test is absent."
+  },
+  {
+    "name": "Guest invitation and check-in",
+    "viewport": "desktop",
+    "covers": [
+      "guest QR generation",
+      "QR PNG download",
+      "manual check-in",
+      "duplicate check-in prevention",
+      "attendance export",
+      "invalid QR validation",
+      "mobile scanner fallback",
+      "event isolation"
+    ],
+    "description": "Generate an invitation, check a guest in and verify attendance remains recorded.",
+    "setup": [
+      "Sign in and create an event named QR Test",
+      "Add a guest named Alex to QR Test"
+    ],
+    "steps": [
+      "Select QR Test",
+      "Open QR & Check-in",
+      "Generate QR for Alex",
+      "Download QR code",
+      "Search for Alex under Find a guest",
+      "Click Check in and confirm",
+      "Refresh the page",
+      "Search for Alex again",
+      "Open Overview and download attendance CSV",
+      "Paste invalid into Invitation code and click Validate code. Verify it is rejected without changing attendance."
+    ],
+    "expected": "The QR is displayed and downloadable, Alex remains checked in, another check-in is disabled, and attendance shows one checked-in guest."
+  },
+  {
+    "name": "Manage event preparation sections",
+    "viewport": "mobile",
+    "covers": [
+      "Food & Beverage CRUD",
+      "Costume CRUD",
+      "Decoration CRUD",
+      "Sound System CRUD",
+      "service supplier and planned cost fields",
+      "service status update",
+      "service search and filter",
+      "service persistence",
+      "service event isolation",
+      "service required name validation",
+      "services GET POST PUT DELETE endpoint family",
+      "service deletion confirmation",
+      "per-item option menus",
+      "section-specific preset choices",
+      "custom service options",
+      "menu options persistence and editing",
+      "service options backend validation and storage"
+    ],
+    "description": "Create and manage preparations across all four event sections and verify event separation.",
+    "setup": [
+      "Sign in and create an event named Preparation Gala",
+      "Create a second event named Other Gala"
+    ],
+    "steps": [
+      "Select Preparation Gala",
+      "Open Food & Beverage. Add Buffet Lunch, supplier Royal Caterers, planned total cost 100000 UGX and status Booked. In its food menu select Buffet and Juice, add custom option Vegetarian meals, then save.",
+      "Open Costume and add Bridal Outfits with Traditional wear selected.",
+      "Open Decoration and add Floral Centerpieces with Floral arrangements selected.",
+      "Open Sound System and add Wireless Microphones with Wireless microphones selected.",
+      "Refresh and select Preparation Gala. Verify each item remains in its section",
+      "Expand each item’s menu and verify the selected options remain after refresh. Edit Buffet Lunch to remove Juice, save, refresh and verify Buffet and Vegetarian meals remain but Juice is absent.",
+      "Edit Buffet Lunch to Royal Buffet, cost 120000 and status Ready",
+      "Search for Royal Buffet and filter Ready. Verify its updated details",
+      "Select Other Gala and verify Royal Buffet is not listed",
+      "Select Preparation Gala. Delete Royal Buffet and confirm",
+      "Open Add item and try saving an empty item name"
+    ],
+    "expected": "All four sections store their own items, edits persist, the other event does not show them, confirmed deletion removes the item, and an empty name cannot be saved. Selected preset and custom menu options persist, can be removed through editing, and appear in each item’s expandable menu."
+  }
+]
